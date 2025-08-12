@@ -10783,6 +10783,9 @@ header.masthead .masthead-heading {
 @media (min-width: 992px) {
     .timeline>li {
         min-height: 150px;
+        display: flexbox;
+        margin-left: 1rem;
+        z-index: 1000;
     }
 
     .timeline>li .timeline-panel {
@@ -10793,6 +10796,7 @@ header.masthead .masthead-heading {
         width: 150px;
         height: 150px;
         margin-left: -75px;
+        z-index: 100;
     }
 
     .timeline>li .timeline-image h4 {
@@ -10852,9 +10856,6 @@ header.masthead .masthead-heading {
 }
 section#contact {
     background-color: #212529;
-    background-image: url("../assets/img/map-image.png");
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 section#contact .section-heading {
@@ -10921,3 +10922,40 @@ section#contact form#contactForm :-ms-input-placeholder {
     font-size: 0.9rem;
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+[data-tooltip]{
+    position:relative;
+}
+
+[data-tooltip]::after{
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    background-color: var(--gray);
+    color: var(--white);
+    padding: 5px;
+    border-radius: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+    max-width: 200px;
+    transform: translate(-50%);
+    visibility: hidden;
+    z-index: 100;
+}
+
+[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(70%);
+    visibility: hidden;
+    opacity: 0;
+    border: 3px solid transparent;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+
+[data-tooltip]:hover:after,[data-tooltip]:hover::before{
+    opacity: 1;
+    visibility: visible;
+}
+
