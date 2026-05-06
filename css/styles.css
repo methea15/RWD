@@ -11157,3 +11157,9 @@ left {
         transform: rotate(180deg);
     }
 }
+
+.image_fig{
+    display: flex;
+    width: 80%;
+    height: 40%;
+}
